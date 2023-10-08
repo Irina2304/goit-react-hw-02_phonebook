@@ -33,6 +33,7 @@ export class AddForm extends Component {
           <StyledInput
             type="text"
             name="name"
+            pattern="[A-Za-z]{1,32}"
             value={this.state.name}
             onChange={this.onChange}
             required />
