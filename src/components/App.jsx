@@ -21,12 +21,13 @@ export class App extends Component {
   onFormSubmit = (data) => {
   
     const contactsArr = this.state.contacts;
-    // contactsArr.map(item => {
-    //   if (data.name === item.name) {
-    //     return alert(`${data.name} is already in contacts` )
-    //   } 
-    //   return this.onContactsAdd
-    // })
+    contactsArr.map(item => {
+      if (data.name === item.name) {
+        return alert(`${data.name} is already in contacts` )
+      } 
+      return
+    })
+    return this.onContactsAdd(data)
   }
 
   onContactsAdd = (data) => {
