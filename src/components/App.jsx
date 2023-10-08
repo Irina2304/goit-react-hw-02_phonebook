@@ -19,18 +19,13 @@ export class App extends Component {
   
 
   onFormSubmit = (data) => {
-  
-    const contactsArr = this.state.contacts;
-    contactsArr.map(item => {
-      if (data.name === item.name) {
-        return alert(`${data.name} is already in contacts` )
-      } 
-      return this.state.contacts
-    })
-    return this.onContactsAdd(data)
-  }
 
-  onContactsAdd = (data) => {
+    const checkName = this.state.contacts.find(
+					contact => contact.name.toLowerCase() === data.name.toLowerCase());
+    if (checkName) {
+      return alert(`${data.name} is already in contacts` )
+    }
+
     data.id = nanoid();
   
     this.setState(prevState => ({
@@ -38,7 +33,18 @@ export class App extends Component {
     }));
   }
 
-  
+
+  getVisibleItems = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(item => {
+      const nameFilter = filter.toLowerCase();
+      const hasName = item.name.toLowerCase().includes(nameFilter);
+      if (!filter) {
+        return this.state.contacts;
+      }
+      return hasName;
+    });
+  };
 
   onClickDel = (delId) => {
     this.setState(prevState => ({
