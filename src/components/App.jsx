@@ -19,21 +19,25 @@ export class App extends Component {
   
 
   onFormSubmit = (data) => {
-    data.id = nanoid();
   
     const contactsArr = this.state.contacts;
-    contactsArr.map(item => {
-      if (data.name === item.name) {
-        return alert(`${data.name} is already in contacts` )
-      } 
-      return
-    })
+    // contactsArr.map(item => {
+    //   if (data.name === item.name) {
+    //     return alert(`${data.name} is already in contacts` )
+    //   } 
+    //   return this.onContactsAdd
+    // })
+  }
 
+  onContactsAdd = (data) => {
+    data.id = nanoid();
+  
     this.setState(prevState => ({
       contacts: [...prevState.contacts, data ],
     }));
   }
 
+  
 
   onClickDel = (delId) => {
     this.setState(prevState => ({
