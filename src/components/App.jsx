@@ -25,7 +25,7 @@ export class App extends Component {
       if (data.name === item.name) {
         return alert(`${data.name} is already in contacts` )
       } 
-      return
+      return this.state.contacts
     })
     return this.onContactsAdd(data)
   }
