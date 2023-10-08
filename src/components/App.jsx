@@ -34,18 +34,6 @@ export class App extends Component {
   }
 
 
-  getVisibleItems = () => {
-    const { contacts, filter } = this.state;
-    return contacts.filter(item => {
-      const nameFilter = filter.toLowerCase();
-      const hasName = item.name.toLowerCase().includes(nameFilter);
-      if (!filter) {
-        return this.state.contacts;
-      }
-      return hasName;
-    });
-  };
-
   onClickDel = (delId) => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(item => item.id !== delId)
