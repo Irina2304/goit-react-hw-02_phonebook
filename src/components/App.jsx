@@ -25,11 +25,9 @@ export class App extends Component {
     if (checkName) {
       return alert(`${data.name} is already in contacts` )
     }
-
-    data.id = nanoid();
   
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, data ],
+      contacts: [...prevState.contacts, {...data, id:nanoid()} ],
     }));
   }
 
@@ -53,9 +51,6 @@ export class App extends Component {
     return contacts.filter(item => {
       const nameFilter = filter.toLowerCase();
       const hasName = item.name.toLowerCase().includes(nameFilter);
-      if (!filter) {
-        return this.state.contacts;
-      }
       return hasName;
     });
   };
